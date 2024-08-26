@@ -2,11 +2,12 @@
 
 ### 1. Create React App and Login page and User UI with settings page
 Upon first login, make them input the following...
-Main fields: Name, age, picture of you, employer or potential employee, field.
-For employers: Company, preferred education, preferred qualifications.
+
+Main fields: Name, age, picture of you, employer or potential employee, field.\
+For employers: Company, preferred education, preferred qualifications.\
 For potential employees: Education, skills (create 5), elevator pitch.
 
-To change the stuff, BAM settings page
+To change the stuff, BAM Settings page.
 
 ### 2. Make a database of users separated by employer and potential employee
 Different experience for employer and potential employee. Each ones feed should be exclusively the other category.
