@@ -1,21 +1,28 @@
 # Linkedinder
+The name is a combination of Linkedin and Tinder (haha). It's a job-searching platform in the structure of a dating app.
+
+This project used the MERN stack (MongoDB, Express, React, and Nodejs) with socket.io for the chatting features.
 
 ### 1. Create React App and Login page and User UI with settings page
 Upon first login, make them input the following...
 
 Main fields: Name, age, picture of you, employer or potential employee, field.\
-For employers: Company, preferred education, preferred qualifications.\
+For employers: Company, preferred education, preferred qualifications. Employers also have an exclusive feature that allows them to create multiple job listings.\
 For potential employees: Education, skills (create 5), elevator pitch.
 
-To change the stuff, BAM Settings page.
+To change preferences and info, BAM Settings page.
 
-### 2. Make a database of users separated by employer and potential employee
+### 2. Personalize feeds based on preferences
 Different experience for employer and potential employee. Each ones feed should be exclusively the other category.
 
+Employer: Recommend people that have a few of the skills you want skills (plz give us a chance).\
+Potential employee: Recommend job postings that at least one of your skills aligns with.
+
 ### 3. Add swiping function
+Swipe by using the left and right arrow keys or the buttons on the UI.\
 CLOSING AND RE-OPENING SHOULD SAVE THE STATE (plz actually follow through with this).
 
-If you swiped through all the users, ask for a re-cycle.
+If you swiped through all the users (damn, why you so picky), ask for a re-cycle.
 
 ### 4. Add way to connect people
 Make a chat app (woo) that connects employer to employee if both swiped right.
