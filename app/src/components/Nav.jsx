@@ -1,10 +1,14 @@
 import React from 'react';
+import logo from '../images/UppercaseGamma.png';
 
 function Nav() {
     return (
-        <div>
-            <h1>Dashboard</h1>
-        </div>
+        <nav>
+            <div className="logo-container">
+                <img className="logo" src={logo} />
+            </div>
+            {!authToken && <button className="nav-button">Log In</button>}
+        </nav>
     );
 }
 

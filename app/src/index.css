@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Readex+Pro:wght@160..700&display=swap');
+
+/* General Stuff */
+* {
+    font-family: 'Readex Pro', sans-serif;
+}
+
+body {
+    text-align: center;
+}
+
+.main-button {
+    color: white;
+    font-size: 16px;
+    background: linear-gradient(45deg, #0a66c2, #fe3c72);
+    padding: 12px 28px;
+    border-radius: 16px;
+    border: none;
+    text-transform: capitalize;
+}
+
+.main-button:hover {
+    background: linear-gradient(45deg, #fe3c72, #0a66c2);
+}
+
+/* Nav Stuff */
