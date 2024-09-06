@@ -1,9 +1,10 @@
 import React from 'react';
 import logo from '../images/logo.png';
 
-function Nav({ authToken, showAuthModel, setShowAuthModel }) {
+function Nav({ authToken, showAuthModel, setShowAuthModel, setSignUp }) {
     const handleClick = () => {
         setShowAuthModel(true);
+        setSignUp(false);
     }
     
     return (

@@ -4,26 +4,31 @@ import AuthModel from '../components/AuthModel';
 
 function Home() {
     const [showAuthModel, setShowAuthModel] = useState(false);
-    
+    const [signUp, setSignUp] = useState(true);
+
     const authToken = false;
 
     const handleClick = () => {
-        console.log("clicked");
         setShowAuthModel(true);
+        setSignUp(true);
     }
 
     return (
         <div className="home-cover">
-            <Nav authToken={authToken} showAuthModel={showAuthModel} setShowAuthModel={setShowAuthModel} />
+            <Nav authToken={authToken}
+                showAuthModel={showAuthModel}
+                setShowAuthModel={setShowAuthModel}
+                setSignUp={setSignUp} />
             <div className="home">
-                <h1>Swipe Right 😀</h1>
-                <button className="main-button" onClick={handleClick}>
+                <h1 className="title">Swipe Right 😀</h1>
+                <button className="main-button" onClick={handleClick} disabled={showAuthModel}>
                     {authToken ? "Sign Out" : "Create an Account"}
                 </button>
             </div>
 
             {showAuthModel &&
-                <AuthModel setShowAuthModel={setShowAuthModel} />
+                <AuthModel setShowAuthModel={setShowAuthModel}
+                signUp={signUp} />
             }
         </div>
     );
