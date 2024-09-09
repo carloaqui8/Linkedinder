@@ -28,9 +28,21 @@ function AuthModel({ setShowAuthModel, signUp }) {
             <div className="close" onClick={handleClick}>ⓧ</div>
             <h2>{signUp ? "Create Account" : "Log In"}</h2>
             <form onSubmit={handleSubmit}>
-                <input type="email" id="email" placeholder="Email" required={true} onChange={(e) => setEmail(e.target.value)} />
-                <input type="password" id="password" placeholder="Password" required={true} onChange={(e) => setPassword(e.target.value)} />
-                {signUp && <input type="password" id="confPass" placeholder="Confirm Password" required={true} onChange={(e) => setConfPass(e.target.value)} />}
+                <input type="email"
+                    id="email"
+                    placeholder="Email"
+                    required={true}
+                    onChange={(e) => setEmail(e.target.value)} />
+                <input type="password"
+                    id="password"
+                    placeholder="Password"
+                    required={true}
+                    onChange={(e) => setPassword(e.target.value)} />
+                {signUp && <input type="password"
+                    id="confPass"
+                    placeholder="Confirm Password"
+                    required={true}
+                    onChange={(e) => setConfPass(e.target.value)} />}
                 <input type="submit" className="secondary-button" />
                 <p>{error}</p>
             </form>

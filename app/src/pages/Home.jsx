@@ -15,8 +15,7 @@ function Home() {
 
     return (
         <div className="home-cover">
-            <Nav authToken={authToken}
-                showAuthModel={showAuthModel}
+            <Nav showAuthModel={showAuthModel}
                 setShowAuthModel={setShowAuthModel}
                 setSignUp={setSignUp} />
             <div className="home">
@@ -28,7 +27,7 @@ function Home() {
 
             {showAuthModel &&
                 <AuthModel setShowAuthModel={setShowAuthModel}
-                signUp={signUp} />
+                    signUp={signUp} />
             }
         </div>
     );
