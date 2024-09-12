@@ -10,6 +10,11 @@ body {
     margin: 0;
 }
 
+.title {
+    color: #fe3c72;
+    text-shadow: 2px 2px #0a66c2;
+}
+
 .main-button {
     color: white;
     background: linear-gradient(45deg, #0a66c2, #fe3c72);
@@ -29,7 +34,7 @@ body {
 }
 
 .main-button:disabled {
-    background: linear-gradient(45deg,  #0a66c27F, #fe3e747F);
+    background: linear-gradient(45deg, #0a66c27F, #fe3e747F);
 }
 
 .secondary-button {
@@ -41,6 +46,14 @@ body {
     border-radius: 16px;
     border: solid black 2px;
     margin: 8px;
+}
+
+.secondary-button:hover {
+    color: black;
+}
+
+.secondary-button:active {
+    color: gray;
 }
 
 /* Nav Stuff */
@@ -89,7 +102,7 @@ nav .nav-button {
     height: 100%;
     position: fixed;
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0) 100%),
-    url('images/bg.jpg');
+        url('images/bg.jpg');
 }
 
 /* Authentication Model */
@@ -121,4 +134,52 @@ nav .nav-button {
     padding: 8px;
     margin: 8px;
     font-size: 18px;
+}
+
+/* Onboarding Page */
+
+.onboarding form {
+    display: flex;
+    flex-direction: space-around;
+    margin: auto;
+    justify-content: center;
+}
+
+.onboarding form section {
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    width: 37.5%;
+}
+
+.onboarding form input {
+    font-size: 16px;
+    padding: 12px 20px;
+    margin: 10px 0;
+    border: 2px solid black;
+    border-radius: 8px;
+}
+
+.onboarding form .multi-input-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.onboarding form .multi-input-container input[type="number"] {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 124px;
+}
+
+.onboarding form .multi-input-container div input {
+    margin-right: 10px;
+    float: left;
+}
+
+.onboarding form .multi-input-container div label {
+    padding: 6px;
+    padding-left: 0;
+    float: right;
 }

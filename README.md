@@ -7,15 +7,15 @@ This project used the MERN stack (MongoDB, Express, React, and Nodejs) with sock
 Upon first login, make them input the following...
 
 Main fields: Name, age, picture of you, employer or potential employee, field.\
-For employers: Company, preferred education, preferred qualifications. Employers also have an exclusive feature that allows them to create multiple job listings.\
-For potential employees: Education, skills (create 5), elevator pitch.
+For employers: Preferred education, preferred skill (5 for now), company name.\
+For potential employees: Education, skills (create 5 for now), about.
 
 To change preferences and info, BAM Settings page.
 
 ### 2. Personalize feeds based on preferences
 Different experience for employer and potential employee. Each ones feed should be exclusively the other category.
 
-Employer: Recommend people that have a few of the skills you want skills (plz give us a chance).\
+Employer: Recommend people that have a skill you want (plz give us a chance).\
 Potential employee: Recommend job postings that at least one of your skills aligns with.
 
 ### 3. Add swiping function
