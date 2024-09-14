@@ -3,14 +3,61 @@ import Nav from '../components/Nav';
 
 function Onboarding() {
     const [isEmployee, setIsEmployee] = useState(true);
+    const [formData, setFormData] = useState({
+        firstName: "",
+        lastName: "",
+        dobYear: "",
+        dobMonth: "",
+        dobDay: "",
+        imgUrl: "",
+        field: "",
+        education: "",
+        skills: [],
+        about: "",
+        offers: []
+    });
 
     const handleSubmit = () => {
         console.log('submitted');
     }
 
-    const handleChange = () => {
-        console.log('changed');
+    const handleChange = (e) => {
+        console.log(e);
+        const value = e.target.value;
+        const name = e.target.name;
+        console.log(value, name);
+
+        setFormData((prevState) => {
+            return {
+                ...prevState,
+                [name]: value
+            }
+        });
+        console.log(formData);
     }
+
+    const turnToEmployer = () => {
+        setIsEmployee(false);
+        setFormData((prev) => {
+            const { about, ...rest } = prev;
+            return {
+                company: "",
+                ...rest
+            };
+        });
+    }
+
+    const turnToEmployee = () => {
+        setIsEmployee(true);
+        setFormData((prev) => {
+            const { company, ...rest } = prev;
+            return {
+                about: "",
+                ...rest
+            };
+        });
+    }
+
 
     return (
         <div>
@@ -25,15 +72,15 @@ function Onboarding() {
                     <input type="radio"
                         id="employerSelection"
                         name="empSelection"
-                        value="employer"
-                        onChange={() => { setIsEmployee(false) }} />
+                        value={false}
+                        onChange={turnToEmployer} />
                     <label htmlFor="employerSelection">Employer</label>
 
                     <input type="radio"
                         id="employeeSelection"
                         name="empSelection"
-                        value="employee"
-                        onChange={() => { setIsEmployee(true) }}
+                        value={true}
+                        onChange={turnToEmployee}
                         defaultChecked={true} />
                     <label htmlFor="employeeSelection">Potential Employee</label>
                 </div>
@@ -42,7 +89,7 @@ function Onboarding() {
                 {/* Actual Information to be stored in whichever DB was specified */}
                 <form onSubmit={handleSubmit}>
                     <section>
-                        <div className="name-inputs">
+                        <div className="text-input-container">
                             <div>
                                 <label htmlFor="firstName">First Name</label>
                                 <input type="text"
@@ -50,7 +97,7 @@ function Onboarding() {
                                     name="firstName"
                                     placeholder="First Name"
                                     required={true}
-                                    value={""}
+                                    value={formData.firstName}
                                     onChange={handleChange} />
                             </div>
                             <div>
@@ -60,7 +107,7 @@ function Onboarding() {
                                     name="lastName"
                                     placeholder="Last Name"
                                     required={true}
-                                    value={""}
+                                    value={formData.lastName}
                                     onChange={handleChange} />
                             </div>
                         </div>
@@ -72,21 +119,21 @@ function Onboarding() {
                                 name="dobMonth"
                                 placeholder="MM"
                                 required={true}
-                                value={""}
+                                value={formData.dobMonth}
                                 onChange={handleChange} />
                             <input type="number"
                                 id="dobDay"
                                 name="dobDay"
                                 placeholder="DD"
                                 required={true}
-                                value={""}
+                                value={formData.dobDay}
                                 onChange={handleChange} />
                             <input type="number"
                                 id="dobYear"
                                 name="dobYear"
                                 placeholder="YYYY"
                                 required={true}
-                                value={""}
+                                value={formData.dobYear}
                                 onChange={handleChange} />
                         </div>
 
@@ -97,7 +144,8 @@ function Onboarding() {
                                     id="fieldCS"
                                     name="field"
                                     value="Computer Science"
-                                    onChange={handleChange} />
+                                    onChange={handleChange}
+                                    required={true} />
                                 <label htmlFor="fieldCS">Computer Science</label>
                             </div>
                             <div>
@@ -136,6 +184,7 @@ function Onboarding() {
                         <div className="photo-container">
 
                         </div>
+                        {/* PERCHANCE ADD AN ATTACHMENT FOR RESUME */}
 
                         {/* Change labels based on employer or employee */}
                         {!isEmployee ? <h2>Preferred Education</h2> : <h2>Education</h2>}
@@ -144,7 +193,8 @@ function Onboarding() {
                                 id="educationHS"
                                 name="education"
                                 value="HS Degree"
-                                onChange={handleChange} />
+                                onChange={handleChange}
+                                required={true} />
                             <label htmlFor="educationHS">High School Degree</label>
                             <input type="radio"
                                 id="educationA"
@@ -173,31 +223,32 @@ function Onboarding() {
                         </div>
 
                         {!isEmployee ? <h2>Preferred Skills</h2> : <h2>Skills</h2>}
-                        <h2>SKILL SELECTOR</h2>
+                        <h5>SKILL SELECTOR</h5>
 
                         {!isEmployee ?
-                            <div>
+                            <div className="text-input-container">
                                 <label>Company Name</label>
                                 <input type="text"
                                     id="company"
                                     name="company"
                                     placeholder="Company"
                                     required={true}
-                                    value={""}
+                                    value={formData.company}
                                     onChange={handleChange} />
                             </div>
                             :
-                            <div>
+                            <div className="text-input-container">
                                 <label>About</label>
                                 <input type="text"
                                     id="about"
                                     name="about"
                                     placeholder="About"
                                     required={true}
-                                    value={""}
+                                    value={formData.about}
                                     onChange={handleChange} />
                             </div>
                         }
+                        <h1>isEmployee is: {isEmployee ? <p>true</p> : <p>false</p>}</h1>
                         <input type="submit" className="secondary-button" />
                     </section>
                 </form>
