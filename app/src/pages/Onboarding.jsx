@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Nav from '../components/Nav';
+import SkillSelector from '../components/SkillSelector';
 
 function Onboarding() {
     const [isEmployee, setIsEmployee] = useState(true);
@@ -19,7 +20,7 @@ function Onboarding() {
 
     const handleSubmit = () => {
         console.log('submitted');
-    }
+    };
 
     const handleChange = (e) => {
         console.log(e);
@@ -27,14 +28,14 @@ function Onboarding() {
         const name = e.target.name;
         console.log(value, name);
 
-        setFormData((prevState) => {
+        setFormData((prev) => {
             return {
-                ...prevState,
+                ...prev,
                 [name]: value
             }
         });
-        console.log(formData);
-    }
+        // console.log(formData);
+    };
 
     const turnToEmployer = () => {
         setIsEmployee(false);
@@ -45,7 +46,7 @@ function Onboarding() {
                 ...rest
             };
         });
-    }
+    };
 
     const turnToEmployee = () => {
         setIsEmployee(true);
@@ -56,8 +57,7 @@ function Onboarding() {
                 ...rest
             };
         });
-    }
-
+    };
 
     return (
         <div>
@@ -189,41 +189,51 @@ function Onboarding() {
                         {/* Change labels based on employer or employee */}
                         {!isEmployee ? <h2>Preferred Education</h2> : <h2>Education</h2>}
                         <div className="multi-input-container">
-                            <input type="radio"
-                                id="educationHS"
-                                name="education"
-                                value="HS Degree"
-                                onChange={handleChange}
-                                required={true} />
-                            <label htmlFor="educationHS">High School Degree</label>
-                            <input type="radio"
-                                id="educationA"
-                                name="education"
-                                value="Associates Degree"
-                                onChange={handleChange} />
-                            <label htmlFor="educationA">Associate's Degree</label>
-                            <input type="radio"
-                                id="educationB"
-                                name="education"
-                                value="Bachelors Degree"
-                                onChange={handleChange} />
-                            <label htmlFor="educationB">Bachelor's Degree</label>
-                            <input type="radio"
-                                id="educationM"
-                                name="education"
-                                value="Masters Degree"
-                                onChange={handleChange} />
-                            <label htmlFor="educationM">Master's Degree</label>
-                            <input type="radio"
-                                id="educationP"
-                                name="education"
-                                value="PhD"
-                                onChange={handleChange} />
-                            <label htmlFor="educationP">PhD</label>
+                            <div>
+                                <input type="radio"
+                                    id="educationHS"
+                                    name="education"
+                                    value="HS Degree"
+                                    onChange={handleChange}
+                                    required={true} />
+                                <label htmlFor="educationHS">High School Degree</label>
+                            </div>
+                            <div>
+                                <input type="radio"
+                                    id="educationA"
+                                    name="education"
+                                    value="Associates Degree"
+                                    onChange={handleChange} />
+                                <label htmlFor="educationA">Associate's Degree</label>
+                            </div>
+                            <div>
+                                <input type="radio"
+                                    id="educationB"
+                                    name="education"
+                                    value="Bachelors Degree"
+                                    onChange={handleChange} />
+                                <label htmlFor="educationB">Bachelor's Degree</label>
+                            </div>
+                            <div>
+                                <input type="radio"
+                                    id="educationM"
+                                    name="education"
+                                    value="Masters Degree"
+                                    onChange={handleChange} />
+                                <label htmlFor="educationM">Master's Degree</label>
+                            </div>
+                            <div>
+                                <input type="radio"
+                                    id="educationP"
+                                    name="education"
+                                    value="PhD"
+                                    onChange={handleChange} />
+                                <label htmlFor="educationP">PhD</label>
+                            </div>
                         </div>
 
                         {!isEmployee ? <h2>Preferred Skills</h2> : <h2>Skills</h2>}
-                        <h5>SKILL SELECTOR</h5>
+                        <SkillSelector field={formData.field} />
 
                         {!isEmployee ?
                             <div className="text-input-container">
