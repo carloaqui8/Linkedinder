@@ -1,25 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import skillsData from '../skills.json';
 
-function SkillSelector({ field }) {
-    const [skills, setSkills] = useState([]);
+function SkillSelector({ field, sendData }) {
+    const [data, setData] = useState([]);
 
-    const handleSkillsChange = () => {
-        setSkills((prev) => [...prev, "extra skill"]);
-        console.log(skills);
+    const handleChange = (e) => {
+        const value = e.target.value;
+
+        //Rather add the skill or remove the skill
+        if (e.target.checked) {
+            setData((prev) => [...prev, e.target.value]);
+        }
+        else {
+            setData((prev) => {
+                const [value, ...rest] = prev;
+                return rest;
+            });
+        }
     };
 
-    const importedSkills = skillsData[field || "Computer Science"];
+    //Whenever data changes, send it up
+    useEffect(() => {
+        sendData(data);
+    }, [data]);
 
-    //     return (<div>
-    //         <input type="checkbox"
-    //             id={skill}
-    //             name="skills"
-    //             value={skill}
-    //             onChange={handleSkillsChange}
-    //             required={true} />
-    //         <label htmlFor={skill}>{skillsData[field][index]}</label>
-    //     </div>);
+
+    const importedSkills = skillsData[field || "Computer Science"];
 
     return (
         <div className="multi-input-container">
@@ -30,13 +36,11 @@ function SkillSelector({ field }) {
                             id={skill}
                             name="skills"
                             value={skill}
-                            onChange={handleSkillsChange}
-                            required={true} />
-                            <label htmlFor={skill}>{skill}</label>
+                            onChange={handleChange} />
+                        <label htmlFor={skill}>{skill}</label>
                     </div>
                 );
-            }
-            )}
+            })}
         </div>
     );
 }

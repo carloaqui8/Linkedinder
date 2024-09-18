@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Nav from '../components/Nav';
 import SkillSelector from '../components/SkillSelector';
 
 function Onboarding() {
     const [isEmployee, setIsEmployee] = useState(true);
+    const [skillset, setSkillset] = useState([]);
     const [formData, setFormData] = useState({
         firstName: "",
         lastName: "",
@@ -13,30 +14,12 @@ function Onboarding() {
         imgUrl: "",
         field: "",
         education: "",
-        skills: [],
+        skills: skillset,
         about: "",
         offers: []
     });
 
-    const handleSubmit = () => {
-        console.log('submitted');
-    };
-
-    const handleChange = (e) => {
-        console.log(e);
-        const value = e.target.value;
-        const name = e.target.name;
-        console.log(value, name);
-
-        setFormData((prev) => {
-            return {
-                ...prev,
-                [name]: value
-            }
-        });
-        // console.log(formData);
-    };
-
+    //Next two functions replace "about" with "company" and vice-versa
     const turnToEmployer = () => {
         setIsEmployee(false);
         setFormData((prev) => {
@@ -57,6 +40,52 @@ function Onboarding() {
                 ...rest
             };
         });
+    };
+
+    //Updates skillset based on SkillSelector's changes
+    const handleChildChange = (data) => {
+        setSkillset(data);
+    }
+
+    useEffect(() => {
+        setFormData((prev) => {
+            return {
+                ...prev,
+                skills: skillset
+            }
+        });
+    }, [skillset]);
+
+    const handleChange = (e) => {
+        // console.log(e);
+        const value = e.target.value;
+        const name = e.target.name;
+        // console.log(value, name);
+
+        setFormData((prev) => {
+            //Field change => Erase current skills
+            if (name === "field") {
+                return {
+                    ...prev,
+                    [name]: value,
+                    skills: []
+                }
+            }
+            else {
+                return {
+                    ...prev,
+                    [name]: value
+                }
+            }
+        });
+
+        console.log(formData);
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(formData);
+        console.log('submitted');
     };
 
     return (
@@ -233,7 +262,8 @@ function Onboarding() {
                         </div>
 
                         {!isEmployee ? <h2>Preferred Skills</h2> : <h2>Skills</h2>}
-                        <SkillSelector field={formData.field} />
+                        <SkillSelector field={formData.field}
+                            sendData={handleChildChange} />
 
                         {!isEmployee ?
                             <div className="text-input-container">
@@ -258,7 +288,6 @@ function Onboarding() {
                                     onChange={handleChange} />
                             </div>
                         }
-                        <h1>isEmployee is: {isEmployee ? <p>true</p> : <p>false</p>}</h1>
                         <input type="submit" className="secondary-button" />
                     </section>
                 </form>
