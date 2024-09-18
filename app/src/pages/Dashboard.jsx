@@ -1,9 +1,15 @@
 import React from 'react';
+import ChatContainer from '../components/ChatContainer';
 
 function Dashboard() {
     return (
-        <div>
-            <h1>Dashboard</h1>
+        <div className="dashboard">
+            <ChatContainer />
+            <div className="swiper-container">
+                <div className="cards-container">
+
+                </div>
+            </div>
         </div>
     );
 }

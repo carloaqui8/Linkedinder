@@ -13,8 +13,8 @@ function SkillSelector({ field, sendData }) {
         }
         else {
             setData((prev) => {
-                const [value, ...rest] = prev;
-                return rest;
+                const ret = prev.filter(skill => skill !== value);
+                return ret;
             });
         }
     };

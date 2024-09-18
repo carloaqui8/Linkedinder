@@ -42,11 +42,12 @@ function Onboarding() {
         });
     };
 
-    //Updates skillset based on SkillSelector's changes
+    //Update skillset based on SkillSelector's changes
     const handleChildChange = (data) => {
         setSkillset(data);
     }
 
+    //Update formData when skillset changes
     useEffect(() => {
         setFormData((prev) => {
             return {
@@ -56,42 +57,31 @@ function Onboarding() {
         });
     }, [skillset]);
 
+    //Handle change to form data within onboarding
     const handleChange = (e) => {
-        // console.log(e);
         const value = e.target.value;
         const name = e.target.name;
-        // console.log(value, name);
 
         setFormData((prev) => {
             //Field change => Erase current skills
             if (name === "field") {
-                return {
-                    ...prev,
-                    [name]: value,
-                    skills: []
-                }
+                return { ...prev, [name]: value, skills: [] }
             }
             else {
-                return {
-                    ...prev,
-                    [name]: value
-                }
+                return { ...prev, [name]: value }
             }
         });
-
-        console.log(formData);
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(formData);
         console.log('submitted');
+        console.log(formData);
     };
 
     return (
         <div>
             <Nav showAuthModel={false} setShowAuthModel={() => { }} />
-
             <div className="onboarding">
                 <h2>Create an Account</h2>
 
@@ -208,10 +198,10 @@ function Onboarding() {
                         <h2><label htmlFor="photo">Profile Photo</label></h2>
                         <input type="url"
                             id="photo"
-                            name="imgURL"
+                            name="imgUrl"
                             onChange={handleChange} />
                         <div className="photo-container">
-
+                            <img src={formData.imgUrl} alt="profile pic preview" />
                         </div>
                         {/* PERCHANCE ADD AN ATTACHMENT FOR RESUME */}
 

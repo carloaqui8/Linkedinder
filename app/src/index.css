@@ -95,7 +95,7 @@ nav .nav-button {
     background-color: rgb(215, 215, 215);
 }
 
-/* Home Stuff */
+/* Home Page */
 
 .home-cover {
     width: 100%;
@@ -191,3 +191,12 @@ nav .nav-button {
 .onboarding form .text-input-container label {
     padding: 12px;
 }
+
+.onboarding form .photo-container img {
+    width: 100%;
+    max-height: 240px;
+    object-fit: contain;
+}
+
+/* Dashboard Page */
+
