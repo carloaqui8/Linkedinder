@@ -124,6 +124,7 @@ nav .nav-button {
 .auth-model .close {
     float: right;
 }
+
 .auth-model .close:hover {
     cursor: pointer;
 }
@@ -146,6 +147,7 @@ nav .nav-button {
     flex-direction: space-around;
     margin: auto;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .onboarding form section {
@@ -200,3 +202,54 @@ nav .nav-button {
 
 /* Dashboard Page */
 
+.dashboard {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+}
+
+.dashboard .swipe-container {
+    height: 100vh;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: auto;
+}
+
+.swipe {
+    position: absolute;
+}
+
+.cards-container {
+    width: 300px;
+    height: 400px;
+}
+
+
+.card {
+    position: relative;
+    width: 300px;
+    height: 400px;
+    border: 2px solid black;
+    border-radius: 28px;
+    background-size: cover;
+    background-position: center;
+}
+
+.card h3 {
+    margin-top: 10px;
+    color: black;
+    background-color: white;
+    padding: 2px;
+    border-radius: 12px;
+}
+
+/* Chat Container and adjacent pages */
+
+.chat-container {
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.125) 4px 0px 18px;
+}
