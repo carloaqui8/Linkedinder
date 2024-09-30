@@ -211,7 +211,7 @@ nav .nav-button {
 
 .dashboard .swipe-container {
     height: 100vh;
-    width: 70%;
+    width: 66.66%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -227,7 +227,6 @@ nav .nav-button {
     width: 300px;
     height: 400px;
 }
-
 
 .card {
     position: relative;
@@ -252,4 +251,66 @@ nav .nav-button {
 .chat-container {
     background-color: white;
     box-shadow: rgba(0, 0, 0, 0.125) 4px 0px 18px;
+    width: 33.33%;
+    text-align: left;
+    z-index: 1;
+}
+
+/* Chat Header and Menu Buttons */
+
+.chat-container .chat-header {
+    display: flex;
+    height: 100px;
+    background: linear-gradient(45deg,#fe3c72, #0a66c2);
+    align-items: center;
+    justify-content: space-between;
+}
+
+.chat-container .chat-header .profile,
+.chat-container .chat-header .logout-icon {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+}
+
+.chat-container .chat-header .profile .img-container {
+    height: 32px;
+    width: 32px;
+    border-radius: 16px;
+    margin: 12px;
+    overflow: hidden;
+}
+
+.chat-container .chat-header .profile .img-container .img {
+    width: 100%;
+}
+
+.chat-container .menu {
+    color: black;
+    font-size: 20px;
+    background-color: rgb(215, 215, 215);
+    padding: 8px;
+    border: none;
+    border-bottom: 2px solid #fe3c72;
+    margin: 2px;
+}
+
+.chat-container .menu:disabled {
+    border-bottom: 2px solid gray;
+}
+
+/* Connections Display */
+
+/* Chat Display */
+
+.chat-display .messages-display {
+    height: 50vh;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.chat-display .chat-input {
+    display: flex;
+    flex-direction: column;
+    padding: 12px;
 }

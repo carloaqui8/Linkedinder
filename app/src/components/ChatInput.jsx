@@ -6,7 +6,7 @@ function ChatInput() {
     return (
         <div className="chat-input">
             <textarea value={text} onChange={(e) => setText(e.target.value)} />
-            <button className="secondary-button">Submit</button>
+            <button className="secondary-button">Send</button>
         </div>
     );
 }

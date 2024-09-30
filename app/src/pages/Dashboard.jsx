@@ -37,9 +37,9 @@ function Dashboard() {
     }
 
     useEffect(() => {
-        document.body.style.overflow = "hidden";
+        document.body.style.overflowX = "hidden";
         return () => {
-            document.body.style.overflow = "scroll";
+            document.body.style.overflowX = "scroll";
         };
     }, []);
 
