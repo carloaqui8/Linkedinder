@@ -1,6 +1,6 @@
 const express = require('express');
 const {MongoClient} = require('mongodb');
-const uri = "mongodb+srv://carloaqui8:ilikecubing7@linkedinderdb.ybgij.mongodb.net/";
+const uri = "Oops";
 
 const app = express();
 const PORT = 8000;
