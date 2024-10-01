@@ -11,6 +11,7 @@ body {
 }
 
 .title {
+    font-size: 100px;
     color: #fe3c72;
     text-shadow: 2px 2px #0a66c2;
 }
@@ -96,6 +97,10 @@ nav .nav-button {
 }
 
 /* Home Page */
+
+.home {
+    margin-top: 100px;
+}
 
 .home-cover {
     width: 100%;
