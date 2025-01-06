@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import Nav from '../components/Nav';
 import SkillSelector from '../components/SkillSelector';
+import { useCookies } from 'react-cookie';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 function Onboarding() {
     const [isEmployee, setIsEmployee] = useState(true);
     const [skillset, setSkillset] = useState([]);
+    const [cookies, setCookie, removeCookie] = useCookies(['user'])
     const [formData, setFormData] = useState({
+        id: cookies.id,
         firstName: "",
         lastName: "",
         dobYear: "",
@@ -16,8 +21,21 @@ function Onboarding() {
         education: "",
         skills: skillset,
         about: "",
+        employee: isEmployee,
         offers: []
     });
+
+    const navigate = useNavigate();
+
+    //Change formData whenever isEmployee changes
+    useEffect(() => {
+        setFormData((prev) => {
+            return {
+                ...prev,
+                employee: isEmployee
+            }
+        });
+    }, [isEmployee]);
 
     //Next two functions replace "about" with "company" and vice-versa
     const turnToEmployer = () => {
@@ -73,10 +91,18 @@ function Onboarding() {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log('submitted');
-        console.log(formData);
+        try {
+            const response = await axios.put('http://localhost:8000/user', { formData });
+            const success = response.status === 200;
+            if (success) {
+                navigate('/dashboard');
+            }
+        }
+        catch (e) {
+            console.log(e);
+        }
     };
 
     return (
@@ -87,21 +113,24 @@ function Onboarding() {
 
                 {/* Choose which DB to store record */}
                 <h3>Are you an employer or potential employee?</h3>
-                <div className="multi-input-container">
-                    <input type="radio"
-                        id="employerSelection"
-                        name="empSelection"
-                        value={false}
-                        onChange={turnToEmployer} />
-                    <label htmlFor="employerSelection">Employer</label>
-
-                    <input type="radio"
-                        id="employeeSelection"
-                        name="empSelection"
-                        value={true}
-                        onChange={turnToEmployee}
-                        defaultChecked={true} />
-                    <label htmlFor="employeeSelection">Potential Employee</label>
+                <div className="overhead">
+                    <div>
+                        <input type="radio"
+                            id="employerSelection"
+                            name="empSelection"
+                            value={false}
+                            onChange={turnToEmployer} />
+                        <label htmlFor="employerSelection">Employer</label>
+                    </div>
+                    <div>
+                        <input type="radio"
+                            id="employeeSelection"
+                            name="empSelection"
+                            value={true}
+                            onChange={turnToEmployee}
+                            defaultChecked={true} />
+                        <label htmlFor="employeeSelection">Potential Employee</label>
+                    </div>
                 </div>
                 <hr width="75%" />
 
@@ -201,7 +230,7 @@ function Onboarding() {
                             name="imgUrl"
                             onChange={handleChange} />
                         <div className="photo-container">
-                            <img src={formData.imgUrl} alt="profile pic preview" />
+                            {formData.imgUrl && <img src={formData.imgUrl} alt="profile pic preview" />}
                         </div>
                         {/* PERCHANCE ADD AN ATTACHMENT FOR RESUME */}
 

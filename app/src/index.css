@@ -142,6 +142,15 @@ nav .nav-button {
 
 /* Onboarding Page */
 
+.onboarding .overhead {
+    margin: auto;
+    width: 500px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
 .onboarding form {
     display: flex;
     flex-direction: space-around;
@@ -273,16 +282,19 @@ nav .nav-button {
     padding: 12px;
 }
 
-.chat-container .chat-header .profile .img-container {
+.img-container {
     height: 32px;
     width: 32px;
     border-radius: 16px;
     margin: 12px;
     overflow: hidden;
+    border: 1px solid;
 }
 
-.chat-container .chat-header .profile .img-container .img {
+.img-container img {
+    height: 100%;
     width: 100%;
+    object-fit: cover;
 }
 
 .chat-container .menu {
@@ -300,12 +312,20 @@ nav .nav-button {
 }
 
 /* Connections Display */
+/* .connections-display {
+    height: auto;
+} */
 
 /* Chat Display */
+.chat-display,
+.connections-display {
+    padding: 10px;
+    height: 60vh;
+    overflow-y: auto;
+}
 
 .chat-display .messages-display {
     height: 50vh;
-    padding: 20px;
     overflow-y: auto;
 }
 

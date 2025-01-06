@@ -1,21 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ChatHeader from './ChatHeader';
 import ConnectionsDisplay from './ConnectionsDisplay';
 import ChatDisplay from './ChatDisplay';
 
-function ChatContainer() {
+function ChatContainer({ user }) {
+    const [clickedUser, setClickedUser] = useState(null);
+    
     return (
         <div className="chat-container">
-            <ChatHeader />
+            <ChatHeader user={user} />
 
             <div>
-                <button className="menu">Connections</button>
-                <button className="menu">Chat</button>
+                <button className="menu" onClick={() => setClickedUser(null)}>Connections</button>
+                <button className="menu" disabled={!clickedUser}>Chat</button>
             </div>
 
-            <ConnectionsDisplay />
+            {!clickedUser && <ConnectionsDisplay conns={user.offers} setClickedUser={setClickedUser} />}
 
-            <ChatDisplay />
+            {clickedUser && <ChatDisplay user={user} clickedUser={clickedUser} />}
         </div>
     );
 }
