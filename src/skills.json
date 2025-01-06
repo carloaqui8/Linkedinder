@@ -1,0 +1,35 @@
+{
+    "Computer Science": [
+        "C/C++",
+        "Python",
+        "HTML/CSS",
+        "JavaScript",
+        "ReactJS",
+        "NodeJS",
+        "TypeScript",
+        "Ruby",
+        "Rust",
+        "Go"
+    ],
+    "Business": [
+        "Strategic Planning",
+        "Negotiation",
+        "Customer Service",
+        "Data Analysis",
+        "Project Management"
+    ],
+    "Biology": [
+        "DNA",
+        "Molecular Biology",
+        "Research",
+        "Data Analysis",
+        "Computer Literacy",
+        "Ecology"
+    ],
+    "Physics": [
+        "Laser",
+        "Simulations",
+        "Chemistry",
+        "Critical Thinking"
+    ]
+}
